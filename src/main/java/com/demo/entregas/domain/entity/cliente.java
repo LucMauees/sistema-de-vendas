@@ -1,5 +1,4 @@
 package com.demo.entregas.domain.entity;
-import org.springframework.cglib.core.Local;
 
 import com.demo.entregas.domain.enumm.statuscliente;
 
