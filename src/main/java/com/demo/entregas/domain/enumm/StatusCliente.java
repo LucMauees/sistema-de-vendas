@@ -1,6 +1,6 @@
 package com.demo.entregas.domain.enumm;
 
-public class statuscliente {
+public class StatusCliente {
     public enum Status {
         ATIVO,
         INATIVO,

@@ -1,11 +1,11 @@
 package com.demo.entregas.domain.entity;
-import com.demo.entregas.domain.enumm.statusProduto;
+import com.demo.entregas.domain.enumm.StatusProduto;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "produto")
-public class produto {
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -27,7 +27,7 @@ public class produto {
     private Integer estoqueAtual;
 
     @Column(nullable = false)
-    private statusProduto.Status status;
+    private StatusProduto.Status status;
 
     @Column(nullable = false)
     private String nome_fornecedor;
@@ -86,11 +86,11 @@ public class produto {
         this.estoqueAtual = estoqueAtual;
     }
 
-    public statusProduto.Status getStatus() {
+    public StatusProduto.Status getStatus() {
         return status;
     }
 
-    public void setStatus(statusProduto.Status status) {
+    public void setStatus(StatusProduto.Status status) {
         this.status = status;
     }
 

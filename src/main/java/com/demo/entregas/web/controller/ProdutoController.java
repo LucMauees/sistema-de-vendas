@@ -11,8 +11,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Produto Controller", description = "Endpoints para gerenciamento de produtos")
 @RequestMapping("/produtos")
 @RestController
-public class produtoController {
-    
+public class ProdutoController {
+
     @Operation(summary = "Chamada de teste para produtos", description = "Retorna uma mensagem de teste para o endpoint de produtos")
     @GetMapping
     public ResponseEntity<String> chamada() {

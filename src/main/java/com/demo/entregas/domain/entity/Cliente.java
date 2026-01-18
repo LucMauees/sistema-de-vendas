@@ -1,6 +1,7 @@
 package com.demo.entregas.domain.entity;
 
-import com.demo.entregas.domain.enumm.statuscliente;
+import com.demo.entregas.domain.enumm.StatusCliente;
+import com.demo.entregas.domain.enumm.StatusCliente.Status;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -8,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cliente")
-public class cliente {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -19,6 +20,9 @@ public class cliente {
 
     @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false, unique = true)
+    private String senha;
 
     @Column(nullable = false)
     private String telefone;
@@ -33,7 +37,20 @@ public class cliente {
     private LocalDate AtualizadoEm;
 
     @Column(nullable = false)
-    private statuscliente.Status status;
+    private StatusCliente.Status status;
+
+    public Cliente(Long id, String nomeCompleto, String email, String senha, String telefone, String CPF,
+            LocalDateTime criadoEm, LocalDate atualizadoEm, Status status) {
+        this.id = id;
+        this.nomeCompleto = nomeCompleto;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.CPF = CPF;
+        this.criadoEm = criadoEm;
+        AtualizadoEm = atualizadoEm;
+        this.status = status;
+    }
 
     public Long getId() {
         return id;
@@ -91,12 +108,20 @@ public class cliente {
         AtualizadoEm = atualizadoEm;
     }
 
-    public statuscliente.Status getStatus() {
+    public StatusCliente.Status getStatus() {
         return status;
     }
 
-    public void setStatus(statuscliente.Status status) {
+    public void setStatus(StatusCliente.Status status) {
         this.status = status;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     
