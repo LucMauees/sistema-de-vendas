@@ -39,6 +39,8 @@ public class Cliente {
     @Column(nullable = false)
     private StatusCliente.Status status;
 
+    protected Cliente() {}
+
     public Cliente(Long id, String nomeCompleto, String email, String senha, String telefone, String CPF,
             LocalDateTime criadoEm, LocalDate atualizadoEm, Status status) {
         this.id = id;

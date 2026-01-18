@@ -1,5 +1,9 @@
 package com.demo.entregas.web.dto;
 
-public class ClienteResponse {
-
-}
+public record ClienteResponse(
+    Long id,
+    String nomeCompleto,
+    String email,
+    String telefone,
+    String CPF
+) {} 
