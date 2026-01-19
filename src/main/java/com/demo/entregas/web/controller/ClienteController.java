@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Tag(name = "Cliente Controller", description = "Endpoints para gerenciamento de clientes")
 @RequestMapping("/cliente")
@@ -29,12 +30,8 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    @Operation(summary = "Chamada de teste para clientes", description = "Retorna uma mensagem de teste para o endpoint de clientes")
-    @GetMapping
-    public ResponseEntity<String> teste() {
-        return ResponseEntity.ok("teste");
-    }
-
+    
+    @Operation(summary = "Cadastro de Cliente", description = "Retorna status 201 Created com os dados do cliente cadastrado")
     @PostMapping("/cadastro")
     public ResponseEntity<ClienteResponse> cadastrarCliente(@RequestBody @Valid ClienteRequest request) {
         Cliente clienteCadastrado = clienteService.cadastrar(request);
@@ -44,10 +41,22 @@ public class ClienteController {
                 clienteCadastrado.getNomeCompleto(),
                 clienteCadastrado.getEmail(),
                 clienteCadastrado.getTelefone(),
-                clienteCadastrado.getCPF()
-        );
+                clienteCadastrado.getCPF());
         URI locaton = URI.create("/cliente/" + clienteCadastrado.getId());
         return ResponseEntity.created(locaton).body(response);
+    }
+    @Operation(summary = "Listar Informações do Cliente", description = "Retorna as informações do cliente pelo ID")
+    @GetMapping("/informacoesCliente")
+    public ResponseEntity<ClienteResponse> listarinformacoes(@RequestParam long id) {
+
+        Cliente cliente = clienteService.listarinformacoes(id);
+        ClienteResponse response = new ClienteResponse(
+                cliente.getId(),
+                cliente.getNomeCompleto(),
+                cliente.getEmail(),
+                cliente.getTelefone(),
+                cliente.getCPF());
+        return ResponseEntity.ok(response);
     }
 
 }

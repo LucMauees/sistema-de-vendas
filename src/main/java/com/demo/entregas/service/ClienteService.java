@@ -43,5 +43,11 @@ public class ClienteService {
         );
         return repository.save(cliente);
 
+    } 
+    
+    @Transactional
+    public Cliente listarinformacoes(Long id) {
+        return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
     }
+    
 }
