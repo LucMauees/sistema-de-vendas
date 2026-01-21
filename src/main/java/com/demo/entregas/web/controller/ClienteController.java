@@ -45,11 +45,15 @@ public class ClienteController {
         URI locaton = URI.create("/cliente/" + clienteCadastrado.getId());
         return ResponseEntity.created(locaton).body(response);
     }
+
+
+    
     @Operation(summary = "Listar Informações do Cliente", description = "Retorna as informações do cliente pelo ID")
     @GetMapping("/informacoesCliente")
     public ResponseEntity<ClienteResponse> listarinformacoes(@RequestParam long id) {
 
         Cliente cliente = clienteService.listarinformacoes(id);
+        
         ClienteResponse response = new ClienteResponse(
                 cliente.getId(),
                 cliente.getNomeCompleto(),
