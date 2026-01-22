@@ -1,4 +1,4 @@
-package com.demo.entregas.security;
+package com.demo.entregas.service.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
