@@ -3,7 +3,7 @@ package com.demo.entregas.service;
 import org.springframework.stereotype.Service;
 import com.demo.entregas.repository.ProdutoRepository;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.entregas.domain.entity.Produto;
 
@@ -16,7 +16,7 @@ public class ProdutoService {
         this.repository = repository;
     }
     
-    @Transactional
+    @Transactional(readOnly = true)
     public Produto buscaProdutoId(Long id) {
         return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
     }

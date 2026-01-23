@@ -9,5 +9,5 @@ public record ProdutoRequest (
      Integer estoqueAtual,
      String categoria,
      String marca,
-     String nome_fornecedor
+     String nomeFornecedor
 ){}

@@ -1,10 +1,8 @@
 package com.demo.entregas.domain.entity;
 
 import com.demo.entregas.domain.enumm.StatusCliente;
-import com.demo.entregas.domain.enumm.StatusCliente.Status;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -28,29 +26,30 @@ public class Cliente {
     private String telefone;
 
     @Column(nullable = false)
-    private String CPF; 
+    private String cpf; 
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime criadoEm;
 
     @Column(nullable = false)
-    private LocalDate AtualizadoEm;
+    private LocalDateTime atualizadoEm;
 
     @Column(nullable = false)
-    private StatusCliente.Status status;
+    @Enumerated(EnumType.STRING)
+    private StatusCliente status;
 
     protected Cliente() {}
 
-    public Cliente(Long id, String nomeCompleto, String email, String senha, String telefone, String CPF,
-            LocalDateTime criadoEm, LocalDate atualizadoEm, Status status) {
+    public Cliente(Long id, String nomeCompleto, String email, String senha, String telefone, String cpf,
+            LocalDateTime criadoEm, LocalDateTime atualizadoEm, StatusCliente status) {
         this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.senha = senha;
         this.telefone = telefone;
-        this.CPF = CPF;
+        this.cpf = cpf;
         this.criadoEm = criadoEm;
-        AtualizadoEm = atualizadoEm;
+        this.atualizadoEm = atualizadoEm;
         this.status = status;
     }
 
@@ -86,12 +85,12 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCPF(String cPF) {
-        CPF = cPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public LocalDateTime getCriadoEm() {
@@ -102,19 +101,19 @@ public class Cliente {
         this.criadoEm = criadoEm;
     }
 
-    public LocalDate getAtualizadoEm() {
-        return AtualizadoEm;
+    public LocalDateTime getAtualizadoEm() {
+        return atualizadoEm;
     }
 
-    public void setAtualizadoEm(LocalDate atualizadoEm) {
-        AtualizadoEm = atualizadoEm;
+    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
+        this.atualizadoEm = atualizadoEm;
     }
 
-    public StatusCliente.Status getStatus() {
+    public StatusCliente getStatus() {
         return status;
     }
 
-    public void setStatus(StatusCliente.Status status) {
+    public void setStatus(StatusCliente status) {
         this.status = status;
     }
 

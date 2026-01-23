@@ -7,8 +7,7 @@ public record ProdutoResponse(
         Integer estoqueAtual,
         String categoria,
         String marca,
-        String nome_fornecedor,
-        String ImagemPrincipalurl
-
+        String nomeFornecedor,
+        String imagemPrincipalUrl
 ) {
 }

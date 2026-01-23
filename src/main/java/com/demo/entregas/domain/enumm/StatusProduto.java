@@ -1,8 +1,7 @@
 package com.demo.entregas.domain.enumm;
 
-public class StatusProduto {
-public enum Status {
+public enum StatusProduto {
     DISPONIVEL,
     INDISPONIVEL,
-    ESGOTADO}
+    ESGOTADO
 }

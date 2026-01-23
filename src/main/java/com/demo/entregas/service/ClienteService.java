@@ -8,7 +8,7 @@ import com.demo.entregas.domain.entity.Cliente;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDateTime;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ClienteService {
@@ -35,18 +35,18 @@ public class ClienteService {
                 request.email(),
                 hash,
                 request.telefone(),
-                request.CPF(),
+                request.cpf(),
                 LocalDateTime.now(),
-                LocalDateTime.now().toLocalDate(),
-                com.demo.entregas.domain.enumm.StatusCliente.Status.ATIVO
+                LocalDateTime.now(),
+                com.demo.entregas.domain.enumm.StatusCliente.ATIVO
 
         );
         return repository.save(cliente);
 
     } 
     
-    @Transactional
-    public Cliente listarinformacoes(Long id) {
+    @Transactional(readOnly = true)
+    public Cliente buscarPorId(Long id) {
         return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado"));
     }
     

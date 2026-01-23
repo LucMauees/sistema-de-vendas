@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Tag(name = "Cliente Controller", description = "Endpoints para gerenciamento de clientes")
 @RequestMapping("/cliente")
@@ -41,25 +41,25 @@ public class ClienteController {
                 clienteCadastrado.getNomeCompleto(),
                 clienteCadastrado.getEmail(),
                 clienteCadastrado.getTelefone(),
-                clienteCadastrado.getCPF());
-        URI locaton = URI.create("/cliente/" + clienteCadastrado.getId());
-        return ResponseEntity.created(locaton).body(response);
+                clienteCadastrado.getCpf());
+        URI location = URI.create("/cliente/" + clienteCadastrado.getId());
+        return ResponseEntity.created(location).body(response);
     }
 
 
     
-    @Operation(summary = "Listar Informações do Cliente", description = "Retorna as informações do cliente pelo ID")
-    @GetMapping("/informacoesCliente")
-    public ResponseEntity<ClienteResponse> listarinformacoes(@RequestParam long id) {
+    @Operation(summary = "Buscar Cliente por ID", description = "Retorna as informações do cliente pelo ID")
+    @GetMapping("/{id}")
+    public ResponseEntity<ClienteResponse> buscarPorId(@PathVariable Long id) {
 
-        Cliente cliente = clienteService.listarinformacoes(id);
+        Cliente cliente = clienteService.buscarPorId(id);
         
         ClienteResponse response = new ClienteResponse(
                 cliente.getId(),
                 cliente.getNomeCompleto(),
                 cliente.getEmail(),
                 cliente.getTelefone(),
-                cliente.getCPF());
+                cliente.getCpf());
         return ResponseEntity.ok(response);
     }
 

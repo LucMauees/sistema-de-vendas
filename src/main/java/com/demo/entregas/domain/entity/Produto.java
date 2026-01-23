@@ -27,16 +27,19 @@ public class Produto {
     private Integer estoqueAtual;
 
     @Column(nullable = false)
-    private StatusProduto.Status status;
+    @Enumerated(EnumType.STRING)
+    private StatusProduto status;
 
     @Column(nullable = false)
-    private String nome_fornecedor;
+    private String nomeFornecedor;
 
     @Column(nullable = false)
     private String categoria;
 
     @Column(nullable = false)
-    private String imagemPrincipalurl;
+    private String imagemPrincipalUrl;
+
+    protected Produto() {}
 
     public Long getId() {
         return id;
@@ -86,20 +89,20 @@ public class Produto {
         this.estoqueAtual = estoqueAtual;
     }
 
-    public StatusProduto.Status getStatus() {
+    public StatusProduto getStatus() {
         return status;
     }
 
-    public void setStatus(StatusProduto.Status status) {
+    public void setStatus(StatusProduto status) {
         this.status = status;
     }
 
-    public String getNome_fornecedor() {
-        return nome_fornecedor;
+    public String getNomeFornecedor() {
+        return nomeFornecedor;
     }
 
-    public void setNome_fornecedor(String nome_fornecedor) {
-        this.nome_fornecedor = nome_fornecedor;
+    public void setNomeFornecedor(String nomeFornecedor) {
+        this.nomeFornecedor = nomeFornecedor;
     }
 
     public String getCategoria() {
@@ -110,12 +113,12 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public String getImagemPrincipalurl() {
-        return imagemPrincipalurl;
+    public String getImagemPrincipalUrl() {
+        return imagemPrincipalUrl;
     }
 
-    public void setImagemPrincipalurl(String imagemPrincipalurl) {
-        this.imagemPrincipalurl = imagemPrincipalurl;
+    public void setImagemPrincipalUrl(String imagemPrincipalUrl) {
+        this.imagemPrincipalUrl = imagemPrincipalUrl;
     }
 
 
