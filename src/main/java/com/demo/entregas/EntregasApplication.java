@@ -1,13 +1,12 @@
 package com.demo.entregas;
 
+import com.demo.entregas.config.JwtProperties;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-@EnableAutoConfiguration
-@ComponentScan
+@EnableConfigurationProperties(JwtProperties.class)
 public class EntregasApplication {
 	
 	public static void main(String[] args) {
